@@ -9,6 +9,7 @@ import Foundation
 import Magnetic
 
 extension MagneticView {
+  
   override public func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
     guard let subview = subview as? RNBubbleSelectNodeView else { return }
     magnetic.addChild(subview.node)
@@ -20,7 +21,7 @@ extension MagneticView {
   }
   
   // Stub functions to make sure RN works
-  @objc func setOnSelectNode(_ onSelectNode: RCTDirectEventBlock?) {
+  @objc func setOnSelect(_ onSelectNode: RCTDirectEventBlock?) {
   }
   
   @objc func setOnDeselectNode(_ onDeselectNode: RCTDirectEventBlock?) {

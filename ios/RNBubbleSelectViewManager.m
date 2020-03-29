@@ -10,8 +10,8 @@
 
 @interface RCT_EXTERN_MODULE(RNBubbleSelectViewManager, RCTViewManager)
 
-RCT_EXPORT_VIEW_PROPERTY(onSelectNode, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDeselectNode, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onSelect, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onDeselect, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(allowsMultipleSelection, BOOL)
 
 @end
