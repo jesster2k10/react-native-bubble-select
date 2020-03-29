@@ -11,7 +11,7 @@
     "lib",
     "android",
     "ios",
-    "reactnativebubbleselect.podspec"
+    "react-native-bubble-select.podspec"
   ],
   "scripts": {
     "test": "jest",
@@ -89,7 +89,10 @@
       ]
     }
   },
-  "eslintIgnore": ["node_modules/", "lib/"],
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
   "prettier": {
     "singleQuote": true,
     "tabWidth": 2,
@@ -116,6 +119,10 @@
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
-    "targets": ["commonjs", "module", "typescript"]
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
   }
 }
