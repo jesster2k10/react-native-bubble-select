@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/jesster2k10/react-native-bubble-select.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,swift}"
+  s.swift_version = "5.0"
 
   s.dependency "React"
   s.dependency "Magnetic"

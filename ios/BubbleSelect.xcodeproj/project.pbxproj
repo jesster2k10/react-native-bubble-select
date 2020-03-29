@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* BubbleSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* BubbleSelect.m */; };
+		9594C7E6243103DA00EAE357 /* MagneticViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594C7E2243103D900EAE357 /* MagneticViewExtension.swift */; };
+		9594C7E7243103DA00EAE357 /* RNBubbleSelectNodeViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594C7E3243103DA00EAE357 /* RNBubbleSelectNodeViewManager.swift */; };
+		9594C7E8243103DA00EAE357 /* RNBubbleSelectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594C7E4243103DA00EAE357 /* RNBubbleSelectNode.swift */; };
+		9594C7E9243103DA00EAE357 /* RNBubbleSelectViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594C7E5243103DA00EAE357 /* RNBubbleSelectViewManager.swift */; };
+		9594C7F02431047200EAE357 /* RNBubbleSelectNodeViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9594C7EE2431047100EAE357 /* RNBubbleSelectNodeViewManager.m */; };
+		9594C7F12431047200EAE357 /* RNBubbleSelectViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9594C7EF2431047200EAE357 /* RNBubbleSelectViewManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,8 +29,13 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libBubbleSelect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBubbleSelect.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* BubbleSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleSelect.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* BubbleSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleSelect.m; sourceTree = "<group>"; };
+		9594C7D92431020E00EAE357 /* BubbleSelect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BubbleSelect-Bridging-Header.h"; sourceTree = "<group>"; };
+		9594C7E2243103D900EAE357 /* MagneticViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagneticViewExtension.swift; sourceTree = "<group>"; };
+		9594C7E3243103DA00EAE357 /* RNBubbleSelectNodeViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBubbleSelectNodeViewManager.swift; sourceTree = "<group>"; };
+		9594C7E4243103DA00EAE357 /* RNBubbleSelectNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBubbleSelectNode.swift; sourceTree = "<group>"; };
+		9594C7E5243103DA00EAE357 /* RNBubbleSelectViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBubbleSelectViewManager.swift; sourceTree = "<group>"; };
+		9594C7EE2431047100EAE357 /* RNBubbleSelectNodeViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBubbleSelectNodeViewManager.m; sourceTree = "<group>"; };
+		9594C7EF2431047200EAE357 /* RNBubbleSelectViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBubbleSelectViewManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +60,13 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* BubbleSelect.h */,
-				B3E7B5891CC2AC0600A0062D /* BubbleSelect.m */,
+				9594C7E2243103D900EAE357 /* MagneticViewExtension.swift */,
+				9594C7EE2431047100EAE357 /* RNBubbleSelectNodeViewManager.m */,
+				9594C7EF2431047200EAE357 /* RNBubbleSelectViewManager.m */,
+				9594C7E4243103DA00EAE357 /* RNBubbleSelectNode.swift */,
+				9594C7E3243103DA00EAE357 /* RNBubbleSelectNodeViewManager.swift */,
+				9594C7E5243103DA00EAE357 /* RNBubbleSelectViewManager.swift */,
+				9594C7D92431020E00EAE357 /* BubbleSelect-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +102,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -95,6 +111,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -112,7 +129,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* BubbleSelect.m in Sources */,
+				9594C7E8243103DA00EAE357 /* RNBubbleSelectNode.swift in Sources */,
+				9594C7E9243103DA00EAE357 /* RNBubbleSelectViewManager.swift in Sources */,
+				9594C7F02431047200EAE357 /* RNBubbleSelectNodeViewManager.m in Sources */,
+				9594C7E7243103DA00EAE357 /* RNBubbleSelectNodeViewManager.swift in Sources */,
+				9594C7F12431047200EAE357 /* RNBubbleSelectViewManager.m in Sources */,
+				9594C7E6243103DA00EAE357 /* MagneticViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,32 +237,41 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../../React/**",
-					"$(SRCROOT)/../../react-native/React/**",
-				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = BubbleSelect;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		58B511F11A9E6C8500147676 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = BubbleSelect;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "BubbleSelect-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = BubbleSelect;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "BubbleSelect-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
