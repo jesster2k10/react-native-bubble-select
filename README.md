@@ -34,7 +34,7 @@ cd ios && pod install
 
 For versions below 0.60.0, use rnpm links
 
-- Run `react-native link @jesster2k10/react-native-range-slider`
+- Run `react-native link react-native-bubble-select`
 - If linking fails, follow the
   [manual linking steps](https://facebook.github.io/react-native/docs/linking-libraries-ios.html#manual-linking)
 
