@@ -11,10 +11,13 @@ import com.facebook.react.bridge.JavaScriptModule
 
 class BubbleSelectPackage : ReactPackage {
     override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-        return Arrays.asList<NativeModule>(BubbleSelectModule(reactContext))
+        return emptyList()
     }
 
     override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-        return emptyList<ViewManager<*, *>>()
+        return listOf(
+          BubbleSelectViewManager(),
+          BubbleSelectNodeViewManager()
+        )
     }
 }
