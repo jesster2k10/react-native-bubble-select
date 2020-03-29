@@ -1,6 +1,6 @@
 {
   "name": "react-native-bubble-select",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "An easy-to-use customizable bubble animation picker, similar to the Apple Music genre selection",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",

@@ -4,7 +4,7 @@ An easy-to-use customizable bubble animation picker, similar to the Apple Music 
 
 ## Features
 
-- iOS & Android Support
+- iOS & Android Support (In beta)
 - Typescript Support
 - Customizable
 
