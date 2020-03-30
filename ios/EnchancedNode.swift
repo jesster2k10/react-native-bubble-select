@@ -84,12 +84,13 @@ class EnchancedNode: Node {
     static let BorderColor = UIColor.clear
     static let Color = UIColor.black
     static let Padding = CGFloat(20)
+    static let Radius = CGFloat(30)
   }
   
   public func update(radius: CGFloat, labelWidth width: CGFloat? = nil) {
     guard let path = SKShapeNode(circleOfRadius: radius).path else { return }
     self.path = path
-    self.label.width = radius
+    self.label.width = width ?? radius
     self.radius = radius
     reneratePhysicsBody(withPath: path)
   }
@@ -125,6 +126,7 @@ class EnchancedNode: Node {
     let scaleAction = SKAction.scale(to: selectedScale, duration: animationDuration)
 
     if let selectedFontColor = selectedFontColor {
+      print("Change font!")
       label.run(.colorTransition(from: originalFontColor, to: selectedFontColor, duration: animationDuration))
     }
     
