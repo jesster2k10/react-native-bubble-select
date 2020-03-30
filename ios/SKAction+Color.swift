@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import Magnetic
 
 func lerp(a : CGFloat, b : CGFloat, fraction : CGFloat) -> CGFloat {
   return (b-a) * fraction + a
