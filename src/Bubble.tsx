@@ -17,6 +17,9 @@ export type BubbleProps = BubbleNode & {
   fontColor?: string;
   fontStyle?: 'bold' | 'bold-italic' | 'normal';
   lineHeight?: number;
+  borderColor?: string;
+  borderWidth?: number;
+  padding?: number;
 };
 
 const Bubble = ({
@@ -30,6 +33,9 @@ const Bubble = ({
   fontColor,
   lineHeight,
   fontStyle,
+  padding,
+  borderColor,
+  borderWidth,
 }: BubbleProps) => {
   const props = Platform.select({
     ios: {
@@ -42,6 +48,9 @@ const Bubble = ({
       fontSize,
       fontColor,
       lineHeight,
+      padding,
+      borderColor,
+      borderWidth,
     },
     android: {
       text,

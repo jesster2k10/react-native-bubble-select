@@ -19,6 +19,8 @@ class RNBubbleMagneticView: UIView {
     let magneticView = MagneticView()
     magnetic = magneticView.magnetic
     magnetic.magneticDelegate = self
+//    magnetic.scene?.view?.showsFPS = true
+//    magnetic.scene?.view?.showsPhysics = true
     magneticView.frame = frame
     magneticView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     return magneticView
@@ -36,6 +38,7 @@ class RNBubbleMagneticView: UIView {
   
   private func setupView() {
     addSubview(magneticView)
+    magnetic.calculateAccumulatedFrame()
   }
   
   override public func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
