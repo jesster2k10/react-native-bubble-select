@@ -19,8 +19,8 @@ class RNBubbleMagneticView: UIView {
     let magneticView = MagneticView()
     magnetic = magneticView.magnetic
     magnetic.magneticDelegate = self
-    magnetic.scene?.view?.showsFPS = true
-    magnetic.scene?.view?.showsPhysics = true
+    // magnetic.scene?.view?.showsFPS = true
+    // magnetic.scene?.view?.showsPhysics = true
     magneticView.frame = frame
     magneticView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     return magneticView
