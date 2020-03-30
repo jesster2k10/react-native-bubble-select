@@ -38,8 +38,8 @@ class RNBubbleSelectNodeView: UIView {
     let node = EnchancedNode(
       text: text,
       image: image,
-      color: color ?? .black,
-      radius: radius ?? 30
+      color: color ?? EnchancedNode.Defaults.Color,
+      radius: radius ?? EnchancedNode.Defaults.Radius
     )
     return node
   }()
