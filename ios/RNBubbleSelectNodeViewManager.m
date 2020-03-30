@@ -25,5 +25,9 @@ RCT_EXPORT_VIEW_PROPERTY(lineHeight, CGFloat)
 RCT_EXPORT_VIEW_PROPERTY(borderColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(borderWidth, CGFloat)
 RCT_EXPORT_VIEW_PROPERTY(padding, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(selectedScale, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(deselectedScale, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(animationDuration, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(selectedColor, UIColor)
 
 @end

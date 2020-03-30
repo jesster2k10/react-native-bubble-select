@@ -20,6 +20,10 @@ export type BubbleProps = BubbleNode & {
   borderColor?: string;
   borderWidth?: number;
   padding?: number;
+  selectedScale?: number;
+  deselectedScale?: number;
+  animationDuration?: number;
+  selectedColor?: string;
 };
 
 const Bubble = ({
@@ -36,6 +40,10 @@ const Bubble = ({
   padding,
   borderColor,
   borderWidth,
+  selectedScale,
+  deselectedScale,
+  selectedColor,
+  animationDuration,
 }: BubbleProps) => {
   const props = Platform.select({
     ios: {
@@ -51,6 +59,10 @@ const Bubble = ({
       padding,
       borderColor,
       borderWidth,
+      selectedScale,
+      deselectedScale,
+      animationDuration,
+      selectedColor,
     },
     android: {
       text,

@@ -11,22 +11,6 @@ import UIKit
 import Magnetic
 import SpriteKit
 
-extension Node {
-  private struct AssociatedKeys {
-      static var id = "id"
-  }
-  
-  var id: String? {
-    get {
-      return objc_getAssociatedObject(self, &AssociatedKeys.id) as? String
-    }
-    
-    set(value) {
-      objc_setAssociatedObject(self, &AssociatedKeys.id, value, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    }
-  }
-}
-
 class RNBubbleSelectNodeView: UIView {
   var id: String?
   var text: String?
@@ -44,8 +28,13 @@ class RNBubbleSelectNodeView: UIView {
   var borderColor: UIColor?
   var borderWidth: CGFloat?
   
-  lazy var node: Node = {
-    let node = Node(
+  var selectedScale: CGFloat?
+  var deselectedScale: CGFloat?
+  var animationDuration: CGFloat?
+  var selectedColor: UIColor?
+  
+  lazy var node: EnchancedNode = {
+    let node = EnchancedNode(
       text: text,
       image: image,
       color: color ?? .black,
@@ -60,51 +49,35 @@ class RNBubbleSelectNodeView: UIView {
   
   func updateNode() {
     node.id = id
-    node.label.fontName = fontName ?? "AvenirNext-Medium"
-    node.label.fontSize = fontSize ?? 13
-    node.label.fontColor = fontColor ?? .white
+    node.fontName = fontName ?? EnchancedNode.Defaults.FontName
+    node.fontSize = fontSize ?? EnchancedNode.Defaults.FontSize
+    node.fontColor = fontColor ?? EnchancedNode.Defaults.FontColor
     node.label.lineHeight = lineHeight
-    node.strokeColor = borderColor ?? .black
-    node.lineWidth = borderWidth ?? 0
-    node.color = color ?? .black
+    node.borderColor = borderColor ?? EnchancedNode.Defaults.BorderColor
+    node.borderWidth = borderWidth ?? EnchancedNode.Defaults.BorderWidth
+    node.color = color ?? EnchancedNode.Defaults.Color
     node.text = text
+    node.padding = padding ?? EnchancedNode.Defaults.Padding
+    
+    if let selectedScale = selectedScale {
+      node.selectedScale = selectedScale
+    }
+    
+    if let deselectedScale = deselectedScale {
+      node.deselectedScale = deselectedScale
+    }
+    
+    if let animationDuration = animationDuration {
+      node.animationDuration = TimeInterval(animationDuration)
+    }
+    
+    if let selectedColor = selectedColor {
+      node.selectedColor = selectedColor
+    }
     
     if let radius = radius {
-      set(radius: radius)
+      node.update(radius: radius)
     }
-  }
-  
-  private func set(radius: CGFloat, width: CGFloat? = nil) {
-    guard let path = SKShapeNode(circleOfRadius: radius).path else { return }
-    node.path = path
-    node.label.width = width ?? radius
-    node.physicsBody = {
-      let marginScale = CGFloat(self.marginScale ?? 1.01)
-      var transform = CGAffineTransform.identity.scaledBy(x: marginScale, y: marginScale)
-      let body = SKPhysicsBody(polygonFrom: path.copy(using: &transform)!)
-        body.allowsRotation = false
-        body.friction = 0
-        body.linearDamping = 3
-        return body
-    }()
-  }
- 
-  private func resizeBubble() {
-    let defaultFontName = fontName ?? "AvenirNext-Medium"
-    let defaultFontSize = fontSize ?? 13
-  
-    if (radius != nil) {
-      return
-    }
-    
-    if let text = text, let font = UIFont(name: defaultFontName, size: defaultFontSize) {
-      let fontAttributes = [NSAttributedString.Key.font: font]
-      let size = (text as NSString).size(withAttributes: fontAttributes)
-      let padding = self.padding ?? 20
-      let radius = size.width / 2 + CGFloat(padding)
-      set(radius: radius, width: size.width)
-    }
-    
   }
 }
 
@@ -117,7 +90,6 @@ extension RNBubbleSelectNodeView {
   @objc func setText(_ text: String?) {
     self.text = text
     updateNode()
-    resizeBubble()
   }
   
   @objc func setImage(_ image: UIImage?) {
@@ -143,13 +115,11 @@ extension RNBubbleSelectNodeView {
   @objc func setFontSize(_ fontSize: CGFloat) {
     self.fontSize = fontSize
     updateNode()
-    resizeBubble()
   }
   
   @objc func setFontName(_ fontName: String?) {
     self.fontName = fontName
     updateNode()
-    resizeBubble()
   }
   
   @objc func setFontColor(_ fontColor: UIColor?) {
@@ -174,5 +144,26 @@ extension RNBubbleSelectNodeView {
   
   @objc func setPadding(_ padding: CGFloat) {
     self.padding = padding
+    updateNode()
+  }
+  
+  @objc func setSelectedScale(_ selectedScale: CGFloat) {
+    self.selectedScale = selectedScale
+    updateNode()
+  }
+  
+  @objc func setSelectedColor(_ selectedColor: UIColor?) {
+    self.selectedColor = selectedColor
+    updateNode()
+  }
+  
+  @objc func setDeselectedScale(_ deselectedScale: CGFloat) {
+    self.deselectedScale = deselectedScale
+    updateNode()
+  }
+  
+  @objc func setAnimationDuration(_ animationDuration: CGFloat) {
+    self.animationDuration = animationDuration
+    updateNode()
   }
 }

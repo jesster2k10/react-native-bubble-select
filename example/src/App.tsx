@@ -14,7 +14,14 @@ const { width, height } = Dimensions.get('window');
 
 export default function App() {
   const initialBubbles = [
-    { id: '1', text: 'Hello', radius: 35, color: 'blue' },
+    {
+      id: '1',
+      text: 'Hello',
+      radius: 35,
+      color: 'blue',
+      selectedColor: 'lightblue',
+      selectedScale: 4 / 3,
+    },
   ];
   const [bubbles, setBubbles] = React.useState(initialBubbles);
 
@@ -34,6 +41,8 @@ export default function App() {
       text: `Hello ${id}`,
       radius: Math.floor(Math.random() * 55) + 30,
       color: randomColor(),
+      selectedColor: randomColor(),
+      selectedScale: Math.floor(Math.random() * 2) + 1.2,
     };
     setBubbles([...bubbles, newBubble]);
   };
@@ -66,6 +75,8 @@ export default function App() {
               text={bubble.text}
               radius={bubble.radius}
               color={bubble.color}
+              selectedColor={bubble.selectedColor}
+              selectedScale={bubble.selectedScale}
             />
           ))}
         </BubbleSelect>
