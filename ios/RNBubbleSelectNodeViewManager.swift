@@ -37,6 +37,7 @@ class RNBubbleSelectNodeViewManager: RCTViewManager {
     node.fontSize = fontSize
     node.fontColor = fontColor ?? .white
     node.lineHeight = lineHeight ?? 1.1
+    node.updateNode()
     return node
   }
 }
