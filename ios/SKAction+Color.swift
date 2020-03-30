@@ -42,8 +42,13 @@ extension SKAction {
         alpha: lerp(a: startColorComponents.alpha, b: endColorComponents.alpha, fraction: fraction)
       )
       
-      guard let node = node as? SKShapeNode else { return }
-      node.fillColor = transColor
+      if let node = node as? SKShapeNode {
+        node.fillColor = transColor
+      }
+
+      if let label = node as? SKMultilineLabelNode {
+        label.fontColor = transColor
+      }
     })
   }
 }
