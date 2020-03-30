@@ -12,18 +12,20 @@ import BubbleSelect, { Bubble, BubbleNode } from 'react-native-bubble-select';
 
 const { width, height } = Dimensions.get('window');
 
-function randomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 export default function App() {
-  const initialBubbles = [{ id: '1', text: 'Hello', radius: 35 }];
+  const initialBubbles = [
+    { id: '1', text: 'Hello', radius: 35, color: 'blue' },
+  ];
   const [bubbles, setBubbles] = React.useState(initialBubbles);
+
+  const randomColor = React.useCallback(() => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }, []);
 
   const addBubble = () => {
     const id = bubbles.length + 1;
@@ -63,7 +65,7 @@ export default function App() {
               id={bubble.id}
               text={bubble.text}
               radius={bubble.radius}
-              color={randomColor()}
+              color={bubble.color}
             />
           ))}
         </BubbleSelect>
