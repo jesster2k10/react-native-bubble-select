@@ -17,7 +17,9 @@ class EnchancedNode: Node {
   open var deselectedScale: CGFloat = 1
   open var animationDuration: TimeInterval = 0.2
   open var selectedColor: UIColor?
+  open var selectedFontColor: UIColor?
   open var originalColor: UIColor = Defaults.Color
+  open var originalFontColor: UIColor = Defaults.FontColor
   
   open var padding: CGFloat = 20 {
     didSet {
@@ -117,11 +119,16 @@ class EnchancedNode: Node {
   }
   
   override func selectedAnimation() {
-    self.originalColor = fillColor
+    originalColor = fillColor
+    originalFontColor = fontColor
+    
     let scaleAction = SKAction.scale(to: selectedScale, duration: animationDuration)
+
+    if let selectedFontColor = selectedFontColor {
+      label.run(.colorTransition(from: originalFontColor, to: selectedFontColor, duration: animationDuration))
+    }
     
     if let selectedColor = selectedColor {
-      print("Transition color")
       run(.group([
         scaleAction,
         .colorTransition(from: originalColor, to: selectedColor, duration: animationDuration)
@@ -146,5 +153,10 @@ class EnchancedNode: Node {
     } else {
       run(scaleAction)
     }
+    
+    if let selectedFontColor = selectedFontColor {
+      label.run(.colorTransition(from: selectedFontColor, to: originalFontColor, duration: animationDuration))
+    }
+    
   }
 }

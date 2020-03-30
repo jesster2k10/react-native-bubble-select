@@ -29,5 +29,6 @@ RCT_EXPORT_VIEW_PROPERTY(selectedScale, CGFloat)
 RCT_EXPORT_VIEW_PROPERTY(deselectedScale, CGFloat)
 RCT_EXPORT_VIEW_PROPERTY(animationDuration, CGFloat)
 RCT_EXPORT_VIEW_PROPERTY(selectedColor, UIColor)
+RCT_EXPORT_VIEW_PROPERTY(selectedFontColor, UIColor)
 
 @end

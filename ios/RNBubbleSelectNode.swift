@@ -32,6 +32,7 @@ class RNBubbleSelectNodeView: UIView {
   var deselectedScale: CGFloat?
   var animationDuration: CGFloat?
   var selectedColor: UIColor?
+  var selectedFontColor: UIColor?
   
   lazy var node: EnchancedNode = {
     let node = EnchancedNode(
@@ -73,6 +74,10 @@ class RNBubbleSelectNodeView: UIView {
     
     if let selectedColor = selectedColor {
       node.selectedColor = selectedColor
+    }
+    
+    if let selectedFontColor = selectedFontColor {
+      node.selectedFontColor = selectedFontColor
     }
     
     if let radius = radius {
@@ -164,6 +169,11 @@ extension RNBubbleSelectNodeView {
   
   @objc func setAnimationDuration(_ animationDuration: CGFloat) {
     self.animationDuration = animationDuration
+    updateNode()
+  }
+  
+  @objc func setSelectedFontColor(_ fontColor: UIColor?) {
+    self.selectedFontColor = fontColor
     updateNode()
   }
 }
