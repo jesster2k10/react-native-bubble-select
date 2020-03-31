@@ -32,6 +32,7 @@ class RNBubbleSelectNodeView: UIView {
   var animationDuration: CGFloat?
   var selectedColor: UIColor?
   var selectedFontColor: UIColor?
+  var scaleToFitContent: Bool = true
   
   lazy var node: Node = {
     let node = Node(
@@ -58,6 +59,7 @@ class RNBubbleSelectNodeView: UIView {
     node.color = color ?? Node.Defaults.color
     node.text = text
     node.padding = padding ?? Node.Defaults.padding
+    node.scaleToFitContent = scaleToFitContent
     
     if let selectedScale = selectedScale {
       node.selectedScale = selectedScale
@@ -173,6 +175,11 @@ extension RNBubbleSelectNodeView {
   
   @objc func setSelectedFontColor(_ fontColor: UIColor?) {
     self.selectedFontColor = fontColor
+    updateNode()
+  }
+  
+  @objc func setAutoSize(_ autoSize: Bool) {
+    self.scaleToFitContent = autoSize
     updateNode()
   }
 }

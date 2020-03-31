@@ -19,6 +19,7 @@ extension MagneticView {
     subview.node.removeFromParent()
   }
   
+  
   // Stub functions to make sure RN works
   @objc func setOnSelect(_ onSelectNode: RCTDirectEventBlock?) {
   }

@@ -113,4 +113,11 @@ extension RNBubbleMagneticView: MagneticDelegate {
       "id": node.id ?? ""
     ])
   }
+  
+  func magnetic(_ magnetic: Magnetic, didRemove node: Node) {
+    onRemove?([
+      "text": node.text ?? "",
+      "id": node.id ?? ""
+    ])
+  }
 }

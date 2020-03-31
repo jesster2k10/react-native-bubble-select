@@ -25,6 +25,7 @@ export type BubbleProps = BubbleNode & {
   animationDuration?: number;
   selectedColor?: string;
   selectedFontColor?: string;
+  autoSize?: boolean;
 };
 
 const Bubble = ({
@@ -46,6 +47,7 @@ const Bubble = ({
   selectedColor,
   animationDuration,
   selectedFontColor,
+  autoSize,
 }: BubbleProps) => {
   const props = Platform.select({
     ios: {
@@ -66,6 +68,7 @@ const Bubble = ({
       animationDuration,
       selectedColor,
       selectedFontColor,
+      autoSize,
     },
     android: {
       text,
