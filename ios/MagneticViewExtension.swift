@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Magnetic
 
 extension MagneticView {
   

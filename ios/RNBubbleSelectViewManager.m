@@ -12,6 +12,9 @@
 
 RCT_EXPORT_VIEW_PROPERTY(onSelect, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onDeselect, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onRemove, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(allowsMultipleSelection, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(longPressDuration, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(removeNodeOnLongPress, BOOL)
 
 @end

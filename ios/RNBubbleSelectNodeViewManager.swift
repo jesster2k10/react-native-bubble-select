@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Magnetic
 
 @objc(RNBubbleSelectNodeViewManager)
 class RNBubbleSelectNodeViewManager: RCTViewManager {

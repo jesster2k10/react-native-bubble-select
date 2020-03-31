@@ -1,13 +1,13 @@
 //
 //  SKAction+Color.swift
-//  react-native-bubble-select
+//  Magnetic
 //
-//  Created by Jesse Onolememen on 30/03/2020.
+//  Created by Jesse Onolememen on 31/03/2020.
+//  Copyright © 2020 efremidze. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
-import Magnetic
 
 func lerp(a : CGFloat, b : CGFloat, fraction : CGFloat) -> CGFloat {
   return (b-a) * fraction + a
@@ -31,7 +31,9 @@ extension UIColor {
 }
 
 extension SKAction {
-  static func colorTransition(from fromColor: UIColor, to toColor: UIColor, duration: Double = 0.4) -> SKAction {
+  typealias ColorTransitionConfigure = ((_ node: SKNode) -> Void)?
+  
+  static func colorTransition(from fromColor: UIColor, to toColor: UIColor, duration: Double = 0.4, configure: ColorTransitionConfigure = nil) -> SKAction {
     return SKAction.customAction(withDuration: duration, actionBlock: { (node : SKNode!, elapsedTime : CGFloat) -> Void in
       let fraction = CGFloat(elapsedTime / CGFloat(duration))
       let startColorComponents = fromColor.components
@@ -43,12 +45,16 @@ extension SKAction {
         alpha: lerp(a: startColorComponents.alpha, b: endColorComponents.alpha, fraction: fraction)
       )
       
-      if let node = node as? SKShapeNode {
-        node.fillColor = transColor
-      }
+      if let configure = configure {
+        configure(node)
+      } else {
+        if let node = node as? SKShapeNode {
+          node.fillColor = transColor
+        }
 
-      if let label = node as? SKMultilineLabelNode {
-        label.fontColor = transColor
+        if let label = node as? SKMultilineLabelNode {
+          label.fontColor = transColor
+        }
       }
     })
   }

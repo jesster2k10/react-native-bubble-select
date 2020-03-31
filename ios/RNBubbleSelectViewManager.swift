@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Magnetic
 
 @objc(RNBubbleSelectViewManager)
 class RNBubbleSelectViewManager: RCTViewManager {

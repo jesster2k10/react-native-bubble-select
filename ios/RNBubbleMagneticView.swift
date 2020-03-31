@@ -7,13 +7,32 @@
 
 import Foundation
 import UIKit
-import Magnetic
 
 class RNBubbleMagneticView: UIView {
   var magnetic: Magnetic!
-  var allowsMultipleSelection: Bool?
+  
+  var allowsMultipleSelection: Bool = true {
+    didSet {
+      magnetic.allowsMultipleSelection = allowsMultipleSelection
+    }
+  }
+  
+  var removeNodeOnLongPress: Bool = false {
+    didSet {
+      magnetic.removeNodeOnLongPress = removeNodeOnLongPress
+    }
+  }
+  
+  var longPressDuration: TimeInterval? {
+    didSet {
+      guard let duration = longPressDuration else { return }
+      magnetic.longPressDuration = duration
+    }
+  }
+  
   var onSelect: RCTDirectEventBlock?
   var onDeselect: RCTDirectEventBlock?
+  var onRemove: RCTDirectEventBlock?
   
   lazy var magneticView: MagneticView = {
     let magneticView = MagneticView()
@@ -66,11 +85,22 @@ extension RNBubbleMagneticView {
   @objc func setOnDeselect(_ onDeselect: RCTDirectEventBlock?) {
     self.onDeselect = onDeselect
   }
+    
+  @objc func setOnRemove(_ onRemove: RCTDirectEventBlock?) {
+    self.onRemove = onRemove
+  }
+  
+  @objc func setLongPressDuration(_ longPressDuration: CGFloat) {
+    self.longPressDuration = TimeInterval(longPressDuration)
+  }
+  
+  @objc func setRemoveNodeOnLongPress(_ removeNodeOnLongPress: Bool) {
+    self.removeNodeOnLongPress = removeNodeOnLongPress
+  }
 }
 
 extension RNBubbleMagneticView: MagneticDelegate {
   func magnetic(_ magnetic: Magnetic, didSelect node: Node) {
-    guard let node = node as? EnchancedNode else { return }
     onSelect?([
       "text": node.text ?? "",
       "id": node.id ?? ""
@@ -78,7 +108,6 @@ extension RNBubbleMagneticView: MagneticDelegate {
   }
 
   func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
-    guard let node = node as? EnchancedNode else { return }
     onDeselect?([
       "text": node.text ?? "",
       "id": node.id ?? ""
