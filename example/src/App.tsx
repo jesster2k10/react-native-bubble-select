@@ -48,11 +48,15 @@ export default function App() {
   };
 
   const handleSelect = (bubble: BubbleNode) => {
-    Alert.alert(`Selected bubble: ${bubble.text} with id: ${bubble.id}`);
+    Alert.alert('', `Selected bubble: ${bubble.text} with id: ${bubble.id}`);
   };
 
   const handleDeselect = (bubble: BubbleNode) => {
-    Alert.alert(`Deselected bubble: ${bubble.text} with id: ${bubble.id}`);
+    Alert.alert('', `Deselected bubble: ${bubble.text} with id: ${bubble.id}`);
+  };
+
+  const handleRemove = (bubble: BubbleNode) => {
+    Alert.alert('', `Removed bubble: ${bubble.text} with id: ${bubble.id}`);
   };
 
   return (
@@ -65,6 +69,7 @@ export default function App() {
         <BubbleSelect
           onSelect={handleSelect}
           onDeselect={handleDeselect}
+          onRemove={handleRemove}
           width={width}
           height={height}
         >
