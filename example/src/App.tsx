@@ -4,67 +4,54 @@ import {
   View,
   Text,
   SafeAreaView,
-  Dimensions,
   Button,
-  Alert,
+  Platform,
+  Dimensions,
 } from 'react-native';
 import BubbleSelect, { Bubble, BubbleNode } from 'react-native-bubble-select';
+import randomCity, { randomCities } from './randomCity';
 
 const { width, height } = Dimensions.get('window');
 
 export default function App() {
-  const initialBubbles = [
-    {
-      id: '1',
-      text: 'Hello',
-      radius: 35,
-      color: 'blue',
-      selectedColor: 'lightblue',
-      selectedScale: 4 / 3,
-    },
-  ];
-  const [bubbles, setBubbles] = React.useState(initialBubbles);
+  const [cities, setCities] = React.useState(randomCities());
+  const [selectedCites, setSelectedCities] = React.useState<BubbleNode[]>([]);
+  const [removedCities, setRemovedCities] = React.useState<BubbleNode[]>([]);
 
-  const randomColor = React.useCallback(() => {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }, []);
-
-  const addBubble = () => {
-    const id = bubbles.length + 1;
-    const newBubble = {
-      id: `${id}`,
-      text: `Hello ${id}`,
-      radius: Math.floor(Math.random() * 55) + 30,
-      color: randomColor(),
-      selectedColor: randomColor(),
-      selectedScale: Math.floor(Math.random() * 2) + 1.2,
-    };
-    setBubbles([...bubbles, newBubble]);
+  const addCity = () => {
+    setCities([...cities, randomCity()]);
   };
 
   const handleSelect = (bubble: BubbleNode) => {
-    Alert.alert('', `Selected bubble: ${bubble.text} with id: ${bubble.id}`);
+    setSelectedCities([...selectedCites, bubble]);
   };
 
   const handleDeselect = (bubble: BubbleNode) => {
-    Alert.alert('', `Deselected bubble: ${bubble.text} with id: ${bubble.id}`);
+    setSelectedCities(selectedCites.filter(({ id }) => id !== bubble.id));
   };
 
   const handleRemove = (bubble: BubbleNode) => {
-    Alert.alert('', `Removed bubble: ${bubble.text} with id: ${bubble.id}`);
+    setRemovedCities([...removedCities, bubble]);
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.title}>Bubble Select Demo</Text>
-          <Button title="Add Bubble" onPress={addBubble} />
+          <Text style={styles.title}>Discover New Cities</Text>
+          <Text style={styles.message}>
+            Tap on the places you love, hold on the places you don't.
+          </Text>
+          {selectedCites.length > 0 ? (
+            <Text style={styles.selectedCity}>
+              Selected: {selectedCites.map(city => city.text).join(', ')}
+            </Text>
+          ) : null}
+          {removedCities.length > 0 ? (
+            <Text style={styles.selectedCity}>
+              Removed: {removedCities.map(city => city.text).join(', ')}
+            </Text>
+          ) : null}
         </View>
         <BubbleSelect
           onSelect={handleSelect}
@@ -72,19 +59,26 @@ export default function App() {
           onRemove={handleRemove}
           width={width}
           height={height}
+          fontName={Platform.select({
+            ios: 'SinhalaSangamMN-Bold',
+          })}
+          fontSize={16}
         >
-          {bubbles.map(bubble => (
+          {cities.map(city => (
             <Bubble
-              key={bubble.id}
-              id={bubble.id}
-              text={bubble.text}
-              radius={bubble.radius}
-              color={bubble.color}
-              selectedColor={bubble.selectedColor}
-              selectedScale={bubble.selectedScale}
+              key={city.id}
+              id={city.id}
+              text={city.text}
+              color={city.color}
+              selectedColor={city.selectedColor}
+              selectedScale={city.selectedScale}
             />
           ))}
         </BubbleSelect>
+        <View style={styles.footer}>
+          <Button title="Reset" onPress={() => setCities([])} />
+          <Button title="Add" onPress={addCity} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -98,15 +92,28 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 15,
+    paddingTop: 45,
   },
   title: {
-    fontSize: 18,
+    fontSize: 30,
     fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 50,
+    paddingRight: 50,
+  },
+  message: {},
+  selectedCity: {
+    marginTop: 15,
+    fontSize: 12,
+    maxWidth: '80%',
+    textAlign: 'center',
   },
 });
