@@ -14,6 +14,9 @@ An easy-to-use customizable bubble animation picker, similar to the Apple Music 
 
 ![iOS Demo](./Bubble-select-ios.gif)
 
+Advanced Example
+![Advanced iOS Demo](./advanced-example.gif)
+
 ## Installation
 
 Install the library using either yarn or npm like so:
