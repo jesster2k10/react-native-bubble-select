@@ -57,11 +57,15 @@ You must also include `use_frameworks!` at the top of your `Podfile`
 
 ### Android Installation
 
+> **Note** as of version 0.5.0, android support is experimental.
+
 For versions below 0.60.0, follow the linking instructions above.
 
 ## Usage
 
 You can view the [example project](./example/src/App.tsx) for more usage.
+
+### Simple Usage
 
 ```js
 import React from 'react';
@@ -82,7 +86,65 @@ const App = () => {
       <Bubble id="bubble-2" text="Bubble Two" />
       <Bubble id="bubble-3" text="Bubble Three" />
       <Bubble id="bubble-4" text="Bubble Four" />
-    </BubbleSelectonSelect>
+    </BubbleSelect>
+  );
+};
+```
+
+### Advanced Usage
+
+```tsx
+import React from 'react';
+import { Platform, Dimensions } from 'react-native';
+import BubbleSelect, { Bubble, BubbleNode } from 'react-native-bubble-select';
+import randomCities from './randomCities';
+
+const { width, height } = Dimensions.get('window');
+
+const App = () => {
+  const [cities, setCities] = React.useState(randomCities());
+  const [selectedCites, setSelectedCities] = React.useState<BubbleNode[]>([]);
+  const [removedCities, setRemovedCities] = React.useState<BubbleNode[]>([]);
+
+  const addCity = () => {
+    setCities([...cities, randomCity()]);
+  };
+
+  const handleSelect = (bubble: BubbleNode) => {
+    setSelectedCities([...selectedCites, bubble]);
+  };
+
+  const handleDeselect = (bubble: BubbleNode) => {
+    setSelectedCities(selectedCites.filter(({ id }) => id !== bubble.id));
+  };
+
+  const handleRemove = (bubble: BubbleNode) => {
+    setRemovedCities([...removedCities, bubble]);
+  };
+
+  return (
+    <BubbleSelect
+      onSelect={handleSelect}
+      onDeselect={handleDeselect}
+      onRemove={handleRemove}
+      width={width}
+      height={height}
+      fontName={Platform.select({
+        ios: 'SinhalaSangamMN-Bold',
+      })}
+      fontSize={16}
+    >
+      {cities.map(city => (
+        <Bubble
+          key={city.id}
+          id={city.id}
+          text={city.text}
+          color={city.color}
+          selectedColor={city.selectedColor}
+          selectedScale={city.selectedScale}
+        />
+      ))}
+    </BubbleSelect>
   );
 };
 ```
@@ -91,16 +153,57 @@ const App = () => {
 
 ### Common Props
 
+| property  | type   | required | description                                                            | default      |
+| --------- | ------ | -------- | ---------------------------------------------------------------------- | ------------ |
+| id        | string | TRUE     | A custom identifier used for identifying the node                      | -            |
+| text      | string | TRUE     | The text of the bubble. **Note: on android the text must be unique**   | -            |
+| color     | string | FALSE    | The background color of the bubble                                     | black        |
+| radius    | number | FALSE    | The radius of the bubble. This value is ignored if autoSize is enabled | 30           |
+| fontName  | string | FALSE    | The name of the custom font applied to the bubble                      | Avenir-Black |
+| fontSize  | number | FALSE    | The size of the custom font applied to the bubble                      | 13           |
+| fontColor | string | FALSE    | The color of the bubble text                                           | white        |
+
 ### iOS Only Props
 
-### Android Only Props
+| property          | type    | required | description                                                                                                                                    | default      |
+| ----------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| id                | string  | TRUE     | A custom identifier used for identifying the node                                                                                              | -            |
+| text              | string  | TRUE     | The text of the bubble. **Note: on android the text must be unique**                                                                           | -            |
+| color             | string  | FALSE    | The background color of the bubble                                                                                                             | black        |
+| radius            | number  | FALSE    | The radius of the bubble. This value is ignored if autoSize is enabled                                                                         | 30           |
+| marginScale       | number  | FALSE    | The margin scale applied to the physics body of the bubble. **recommend that you do not change this value unless you know what you are doing** | 1.01         |
+| fontName          | string  | FALSE    | The name of the custom font applied to the bubble                                                                                              | Avenir-Black |
+| fontSize          | number  | FALSE    | The size of the custom font applied to the bubble                                                                                              | 13           |
+| fontColor         | string  | FALSE    | The color of the bubble text                                                                                                                   | white        |
+| lineHeight        | number  | FALSE    | The line height of the bubble. This value is ignored if autoSize is enabled                                                                    | 1.5          |
+| borderColor       | string  | FALSE    | The border color of the buble                                                                                                                  | -            |
+| borderWidth       | number  | FALSE    | The border width of the bubble                                                                                                                 | -            |
+| padding           | number  | FALSE    | Extra padding applied to the bubble contents, if autoSize is enabled                                                                           | 20           |
+| selectedScale     | number  | FALSE    | The scale of the selected bubble                                                                                                               | 1.33         |
+| deselectedScale   | number  | FALSE    | The scale of the deselected bubble                                                                                                             | 1            |
+| animationDuration | number  | FALSE    | The duration of the scale animation                                                                                                            | 0.2          |
+| selectedColor     | string  | FALSE    | The background color of the selected bubble                                                                                                    | -            |
+| selectedFontColor | string  | FALSE    | The color of the selected bubble text                                                                                                          | -            |
+| autoSize          | boolean | FALSE    | Whether or not the bubble should resize to fit its content                                                                                     | TRUE         |
 
 ## Acknowledgments
 
 - The iOS version is based off of [Magnetic](https://github.com/efremidze/Magnetic)
 - The Android version is based off of [Bubble-Picker](https://github.com/igalata/Bubble-Picker)
 
-### Roadmap
+## Roadmap
+
+### iOS
+
+- [ ] enable support for images
+
+### Android
+
+- [ ] enable long press to remove
+- [ ] auto size bubble based on content
+- [ ] enable support for images
+
+### General
 
 - [ ] Improve documentation
 - [ ] Unit tests
