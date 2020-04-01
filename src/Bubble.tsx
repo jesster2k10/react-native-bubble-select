@@ -74,7 +74,7 @@ const Bubble = ({
       text,
       color,
       id,
-      fontName,
+      fontFamily: fontName,
       fontSize,
       fontColor,
       fontStyle,
