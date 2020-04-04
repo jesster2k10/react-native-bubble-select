@@ -33,6 +33,7 @@ class BubbleSelectViewManager: ViewGroupManager<BubbleSelectView>() {
 
   override fun addView(parent: BubbleSelectView?, child: View?, index: Int) {
     if (child is BubbleSelectNodeView && parent !== null) {
+      print("Add node")
       parent.addNode(child)
     }
   }

@@ -4,7 +4,7 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.uimanager.events.Event
 import com.facebook.react.uimanager.events.RCTEventEmitter
 
-class BubbleSelectNodeEvent: Event<BubbleSelectNodeEvent>() {
+class BubbleSelectNodeEvent(viewId: Int): Event<BubbleSelectNodeEvent>(viewId) {
   companion object {
     const val EVENT_NAME = "onSelectNode"
   }

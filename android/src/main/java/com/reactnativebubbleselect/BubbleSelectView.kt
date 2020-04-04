@@ -6,11 +6,11 @@ import android.widget.FrameLayout
 import com.facebook.react.bridge.LifecycleEventListener
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.uimanager.UIManagerModule
-import com.igalata.bubblepicker.BubblePickerListener
 import com.igalata.bubblepicker.adapter.BubblePickerAdapter
 import com.igalata.bubblepicker.model.BubbleGradient
 import com.igalata.bubblepicker.model.PickerItem
 import com.igalata.bubblepicker.rendering.BubblePicker
+import com.igalata.bubblepicker.BubblePickerListener
 
 class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEventListener, BubblePickerListener {
   val bubblePicker: BubblePicker
@@ -35,10 +35,8 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
           if (node.fontFamily !== null) {
             typeface = Typeface.create(node.fontFamily, node.fontStyle)
           }
-          textSize = node.fontSize
-          if (node.fontColor !== null) {
-            textColor = Color.parseColor(node.fontColor)
-          }
+          val density = context.resources.displayMetrics.density
+          textColor = Color.parseColor(node.fontColor)
           if (node.color !== null) {
             gradient = BubbleGradient(
               Color.parseColor(node.color),
@@ -79,7 +77,7 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
 
   override fun onBubbleDeselected(item: PickerItem) {
     val node = findNode(item) ?: return
-    val event = BubbleDeselectNodeEvent()
+    val event = BubbleDeselectNodeEvent(bubblePicker.id)
     event.node = node
 
     val reactContext = context as ReactContext
@@ -87,8 +85,12 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
   }
 
   override fun onBubbleSelected(item: PickerItem) {
+    println("Selected item")
+    System.out.println("hi")
     val node = findNode(item) ?: return
-    val event = BubbleSelectNodeEvent()
+    println(node.text)
+    println(node.id)
+    val event = BubbleSelectNodeEvent(bubblePicker.id)
     event.node = node
 
     val reactContext = context as ReactContext
