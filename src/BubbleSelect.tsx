@@ -1,6 +1,10 @@
 import React from 'react';
 import { BubbleNode, BubbleProps } from './Bubble';
-import { NativeSyntheticEvent, requireNativeComponent } from 'react-native';
+import {
+  NativeSyntheticEvent,
+  requireNativeComponent,
+  Platform,
+} from 'react-native';
 
 const RNBubbleSelect = requireNativeComponent('RNBubbleSelectView');
 
@@ -58,6 +62,15 @@ const BubbleSelect = ({
     }
   };
 
+  const androidProps = Platform.select({
+    android: {
+      onSelectNode: handleSelect,
+      onDeselectNode: handleDeselect,
+      bubbleSize,
+    },
+    default: {},
+  });
+
   return (
     <RNBubbleSelect
       style={[defaultStyle, style]}
@@ -65,10 +78,10 @@ const BubbleSelect = ({
       onSelect={handleSelect}
       onDeselect={handleDeselect}
       onRemove={handleRemove}
-      bubbleSize={bubbleSize}
       removeNodeOnLongPress={removeOnLongPress}
       longPressDuration={longPressDuration}
       magneticBackgroundColor={backgroundColor}
+      {...androidProps}
     >
       {React.Children.map(children, (child: any) =>
         React.cloneElement(child, bubbleProps)
