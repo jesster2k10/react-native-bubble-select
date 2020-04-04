@@ -15,7 +15,12 @@ An easy-to-use customizable bubble animation picker, similar to the Apple Music 
 ![iOS Demo](./Bubble-select-ios.gif)
 
 Advanced Example
+
 ![Advanced iOS Demo](./advanced-example.gif)
+
+## Android Example
+
+![Android Demo](./android-example.gif)
 
 ## Installation
 
@@ -193,6 +198,18 @@ const App = () => {
 
 - The iOS version is based off of [Magnetic](https://github.com/efremidze/Magnetic)
 - The Android version is based off of [Bubble-Picker](https://github.com/igalata/Bubble-Picker)
+
+## Known Issues
+
+### iOS
+
+- on certain occasions only half of the bubbles are shown on the screen #2
+
+### Android
+
+- the title of each bubble must be unique else the wrong element may be returned
+- hot reloading does not work #3
+- selection handlers are not triggered
 
 ## Roadmap
 
