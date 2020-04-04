@@ -16,6 +16,7 @@ export type BubbleSelectProps = Omit<BubbleProps, 'text' | 'id'> & {
   height?: number;
   removeOnLongPress?: boolean;
   longPressDuration?: number;
+  backgroundColor?: string;
 };
 
 const BubbleSelect = ({
@@ -30,6 +31,7 @@ const BubbleSelect = ({
   longPressDuration,
   width = 200,
   height = 200,
+  backgroundColor,
   ...bubbleProps
 }: BubbleSelectProps) => {
   const defaultStyle = {
@@ -66,6 +68,7 @@ const BubbleSelect = ({
       bubbleSize={bubbleSize}
       removeNodeOnLongPress={removeOnLongPress}
       longPressDuration={longPressDuration}
+      magneticBackgroundColor={backgroundColor}
     >
       {React.Children.map(children, (child: any) =>
         React.cloneElement(child, bubbleProps)

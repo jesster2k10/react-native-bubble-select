@@ -14,9 +14,20 @@ import randomCity, { randomCities } from './randomCity';
 const { width, height } = Dimensions.get('window');
 
 export default function App() {
-  const [cities, setCities] = React.useState(randomCities());
+  const [cities, setCities] = React.useState<any[]>(randomCities());
+  const [force, setForce] = React.useState(false);
   const [selectedCites, setSelectedCities] = React.useState<BubbleNode[]>([]);
   const [removedCities, setRemovedCities] = React.useState<BubbleNode[]>([]);
+
+  React.useEffect(() => {
+    if (force) {
+      setCities(randomCities());
+    }
+  }, [force]);
+
+  React.useEffect(() => {
+    setForce(true);
+  }, []);
 
   const addCity = () => {
     setCities([...cities, randomCity()]);
