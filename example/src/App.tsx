@@ -49,10 +49,6 @@ export default function App() {
     setRemovedCities([...removedCities, bubble]);
   };
 
-  const handleReset = () => {
-    setCities([]);
-  };
-
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -96,11 +92,11 @@ export default function App() {
               color={city.color}
               selectedColor={city.selectedColor}
               selectedScale={city.selectedScale}
+              gradient={city.gradient}
             />
           ))}
         </BubbleSelect>
         <View style={styles.footer}>
-          <Button title="Reset" onPress={handleReset} />
           <Button title="Add" onPress={addCity} />
         </View>
       </View>
@@ -130,12 +126,13 @@ const styles = StyleSheet.create({
   },
   footer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    width: '100%',
     paddingLeft: 50,
     paddingRight: 50,
     marginBottom: Platform.select({
       android: 50,
     }),
+    alignItems: 'center',
   },
   message: {},
   selectedCity: {

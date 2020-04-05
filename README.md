@@ -161,15 +161,16 @@ const App = () => {
 
 ### Common Props
 
-| property  | type   | required | description                                                            | default      |
-| --------- | ------ | -------- | ---------------------------------------------------------------------- | ------------ |
-| id        | string | TRUE     | A custom identifier used for identifying the node                      | -            |
-| text      | string | TRUE     | The text of the bubble. **Note: on android the text must be unique**   | -            |
-| color     | string | FALSE    | The background color of the bubble                                     | black        |
-| radius    | number | FALSE    | The radius of the bubble. This value is ignored if autoSize is enabled | 30           |
-| fontName  | string | FALSE    | The name of the custom font applied to the bubble                      | Avenir-Black |
-| fontSize  | number | FALSE    | The size of the custom font applied to the bubble                      | 13           |
-| fontColor | string | FALSE    | The color of the bubble text                                           | white        |
+| property        | type   | required | description                                                            | default      |
+| --------------- | ------ | -------- | ---------------------------------------------------------------------- | ------------ |
+| id              | string | TRUE     | A custom identifier used for identifying the node                      | -            |
+| text            | string | TRUE     | The text of the bubble. **Note: on android the text must be unique**   | -            |
+| color           | string | FALSE    | The background color of the bubble                                     | black        |
+| radius          | number | FALSE    | The radius of the bubble. This value is ignored if autoSize is enabled | 30           |
+| fontName        | string | FALSE    | The name of the custom font applied to the bubble                      | Avenir-Black |
+| fontSize        | number | FALSE    | The size of the custom font applied to the bubble                      | 13           |
+| fontColor       | string | FALSE    | The color of the bubble text                                           | white        |
+| backgroundColor | string | FALSE    | The background color of the picker                                     | white        |
 
 ### iOS Only Props
 
@@ -193,6 +194,24 @@ const App = () => {
 | selectedColor     | string  | FALSE    | The background color of the selected bubble                                                                                                    | -            |
 | selectedFontColor | string  | FALSE    | The color of the selected bubble text                                                                                                          | -            |
 | autoSize          | boolean | FALSE    | Whether or not the bubble should resize to fit its content                                                                                     | TRUE         |
+
+### Android Only Props
+
+| property          | type     | required | description                                                                                             | default |
+| ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------- | ------- |
+| bubbleSize        | number   | FALSE    | The size of all the bubbles                                                                             | -       |
+| gradient          | Gradient | FALSE    | A custom gradient to be applied to the bubbles                                                          | -       |
+| maxSelectionCount | Gradient | FALSE    | The max number of selected bubbles **Note: allowsMultipleSelection must be disabled before using this** | -       |
+
+#### Gradient
+
+| property   | type                           | required | description                                    | default |
+| ---------- | ------------------------------ | -------- | ---------------------------------------------- | ------- |
+| startColor | string                         | TRUE     | The size of all the bubbles                    | -       |
+| endColor   | string                         | TRUE     | A custom gradient to be applied to the bubbles | -       |
+| direction  | enum('vertical', 'horizontal') | TRUE     | The direction of the gradient                  | -       |
+
+> **Note** all required fields must be provided else the application will crash.
 
 ## Acknowledgments
 
