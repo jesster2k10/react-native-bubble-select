@@ -46,6 +46,7 @@ export default function App() {
   };
 
   const handleRemove = (bubble: BubbleNode) => {
+    console.log(bubble);
     setRemovedCities([...removedCities, bubble]);
   };
 

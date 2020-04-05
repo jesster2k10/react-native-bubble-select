@@ -197,11 +197,11 @@ const App = () => {
 
 ### Android Only Props
 
-| property          | type     | required | description                                                                                             | default |
-| ----------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------- | ------- |
-| bubbleSize        | number   | FALSE    | The size of all the bubbles                                                                             | -       |
-| gradient          | Gradient | FALSE    | A custom gradient to be applied to the bubbles                                                          | -       |
-| maxSelectionCount | Gradient | FALSE    | The max number of selected bubbles **Note: allowsMultipleSelection must be disabled before using this** | -       |
+| property          | type     | required | description                                    | default |
+| ----------------- | -------- | -------- | ---------------------------------------------- | ------- |
+| bubbleSize        | number   | FALSE    | The size of all the bubbles                    | -       |
+| gradient          | Gradient | FALSE    | A custom gradient to be applied to the bubbles | -       |
+| maxSelectionCount | number   | FALSE    | The max number of selected bubbles             | -       |
 
 #### Gradient
 
@@ -229,6 +229,7 @@ const App = () => {
 - the title of each bubble must be unique else the wrong element may be returned
 - hot reloading does not work #3
 - selection handlers are not triggered
+- after 5 items are selected, the picker rests, likewise with removed.
 
 ## Roadmap
 
