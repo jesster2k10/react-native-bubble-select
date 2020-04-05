@@ -21,6 +21,7 @@ export type BubbleSelectProps = Omit<BubbleProps, 'text' | 'id'> & {
   removeOnLongPress?: boolean;
   longPressDuration?: number;
   backgroundColor?: string;
+  maxSelectedItems?: number;
 };
 
 const BubbleSelect = ({
@@ -36,6 +37,7 @@ const BubbleSelect = ({
   width = 200,
   height = 200,
   backgroundColor,
+  maxSelectedItems,
   ...bubbleProps
 }: BubbleSelectProps) => {
   const defaultStyle = {
@@ -68,6 +70,7 @@ const BubbleSelect = ({
       onDeselectNode: handleDeselect,
       bubbleSize,
       backgroundColor,
+      maxSelectedItems,
     },
     default: {},
   });

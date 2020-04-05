@@ -27,6 +27,12 @@ class BubbleSelectViewManager: ViewGroupManager<BubbleSelectView>() {
     }
   }
 
+  @ReactProp(name = "maxSelectedItems")
+  fun setMaxSelectedItems(view: BubbleSelectView, max: Int?) {
+    if (max == null) return;
+    view.bubblePicker.maxSelectedCount = max
+  }
+
   @ReactProp(name = "bubbleSize")
   fun setBubbleSize(view: BubbleSelectView, size: Int?) {
     if (size == null) return

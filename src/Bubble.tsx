@@ -26,6 +26,11 @@ export type BubbleProps = BubbleNode & {
   selectedColor?: string;
   selectedFontColor?: string;
   autoSize?: boolean;
+  gradient?: {
+    startColor: string;
+    endColor: string;
+    direction: 'horizontal' | 'vertical';
+  };
 };
 
 const Bubble = ({
@@ -48,6 +53,7 @@ const Bubble = ({
   animationDuration,
   selectedFontColor,
   autoSize,
+  gradient,
 }: BubbleProps) => {
   const props = Platform.select({
     ios: {
@@ -78,6 +84,7 @@ const Bubble = ({
       fontSize,
       fontColor,
       fontStyle,
+      gradient,
     },
   });
 
