@@ -32,6 +32,7 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
         return PickerItem().apply {
           val node = nodes[position]
           title = node.text
+          id = node.id
           if (node.fontFamily !== null) {
             typeface = Typeface.create(node.fontFamily, node.fontStyle)
           }
@@ -53,13 +54,13 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
 
   fun addNode(node: BubbleSelectNodeView) {
     nodes.add(node)
-    setupBubblePickerAdapter()
+    bubblePicker.addedItem(nodes.size - 1)
   }
 
-  fun removeNode(node: BubbleSelectNodeView) {
-    nodes.remove(node)
-    setupBubblePickerAdapter()
-  }
+//  fun removeNode(node: BubbleSelectNodeView) {
+//    nodes.remove(node)
+//    setupBubblePickerAdapter()
+//  }
 
   override fun onHostPause() {
     bubblePicker.onPause()
@@ -73,7 +74,7 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
 
   private fun findNode(item: PickerItem): BubbleSelectNodeView? {
     return nodes.find {
-      it.text == item.title
+      it.id == item.id
     }
   }
 
@@ -87,14 +88,18 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
   }
 
   override fun onBubbleSelected(item: PickerItem) {
-    println("Selected item")
-    System.out.println("hi")
     val node = findNode(item) ?: return
-    println(node.text)
-    println(node.id)
     val event = BubbleSelectNodeEvent(bubblePicker.id)
     event.node = node
-    println(event.eventName)
+
+    val reactContext = context as ReactContext
+    reactContext.getNativeModule(UIManagerModule::class.java).eventDispatcher.dispatchEvent(event)
+  }
+
+  override fun onBubbleRemoved(item: PickerItem) {
+    val node = findNode(item) ?: return
+    val event = BubbleRemoveNodeEvent(bubblePicker.id)
+    event.item = node
 
     val reactContext = context as ReactContext
     reactContext.getNativeModule(UIManagerModule::class.java).eventDispatcher.dispatchEvent(event)

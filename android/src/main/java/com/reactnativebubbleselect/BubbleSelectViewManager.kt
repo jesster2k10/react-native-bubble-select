@@ -53,19 +53,22 @@ class BubbleSelectViewManager: ViewGroupManager<BubbleSelectView>() {
 
   override fun removeView(parent: BubbleSelectView?, child: View?) {
     if (child is BubbleSelectNodeView  && parent !== null) {
-      parent.removeNode(child)
+//      parent.removeNode(child)
     }
   }
 
   override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
-    return MapBuilder.of(
-      BubbleSelectNodeEvent.EVENT_NAME, MapBuilder.of(
-        "registrationName", "onSelectNode"
-      ),
-      BubbleDeselectNodeEvent.EVENT_NAME, MapBuilder.of(
-        "registrationName", "onDeselectNode"
-      )
-    )
+    return MapBuilder.builder<String, Any>()
+      .put(BubbleSelectNodeEvent.EVENT_NAME, MapBuilder.of(
+        "registrationName", "onSelect"
+      ))
+      .put(BubbleDeselectNodeEvent.EVENT_NAME, MapBuilder.of(
+        "registrationName", "onDeselect"
+      ))
+      .put(BubbleRemoveNodeEvent.EVENT_NAME, MapBuilder.of(
+        "registrationName", "onRemove"
+      ))
+      .build()
   }
 
 }
