@@ -17,17 +17,6 @@ class BubbleSelectViewManager: ViewGroupManager<BubbleSelectView>() {
     return BubbleSelectView(reactContext)
   }
 
-  @ReactProp(name = "allowsMultipleSelection")
-  fun setAllowsMultipleSelection(view: BubbleSelectView, allowsMultipleSelection: Boolean? = true) {
-    if (allowsMultipleSelection == null) return
-
-    if (allowsMultipleSelection) {
-      view.bubblePicker.maxSelectedCount = 10000
-    } else {
-      view.bubblePicker.maxSelectedCount = 1
-    }
-  }
-
   @ReactProp(name = "maxSelectedItems")
   fun setMaxSelectedItems(view: BubbleSelectView, max: Int?) {
     if (max == null) return;

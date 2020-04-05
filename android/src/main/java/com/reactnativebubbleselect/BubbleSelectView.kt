@@ -21,6 +21,7 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
     inflate(context, R.layout.bubble_view, this)
     bubblePicker = findViewById(R.id.bubble_picker);
     bubblePicker.listener = this;
+    bubblePicker.maxSelectedCount = 10000
     context.addLifecycleEventListener(this);
     setupBubblePickerAdapter()
   }
