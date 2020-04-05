@@ -20,8 +20,9 @@ class BubbleSelectViewManager: ViewGroupManager<BubbleSelectView>() {
   @ReactProp(name = "allowsMultipleSelection")
   fun setAllowsMultipleSelection(view: BubbleSelectView, allowsMultipleSelection: Boolean? = true) {
     if (allowsMultipleSelection == null) return
+
     if (allowsMultipleSelection) {
-      view.bubblePicker.maxSelectedCount = null
+      view.bubblePicker.maxSelectedCount = 10000
     } else {
       view.bubblePicker.maxSelectedCount = 1
     }
@@ -60,13 +61,13 @@ class BubbleSelectViewManager: ViewGroupManager<BubbleSelectView>() {
   override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
     return MapBuilder.builder<String, Any>()
       .put(BubbleSelectNodeEvent.EVENT_NAME, MapBuilder.of(
-        "registrationName", "onSelect"
+        "registrationName", "onSelectNode"
       ))
       .put(BubbleDeselectNodeEvent.EVENT_NAME, MapBuilder.of(
-        "registrationName", "onDeselect"
+        "registrationName", "onDeselectNode"
       ))
       .put(BubbleRemoveNodeEvent.EVENT_NAME, MapBuilder.of(
-        "registrationName", "onRemove"
+        "registrationName", "onRemoveNode"
       ))
       .build()
   }

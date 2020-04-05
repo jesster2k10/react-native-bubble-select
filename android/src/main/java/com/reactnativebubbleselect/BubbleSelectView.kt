@@ -6,6 +6,7 @@ import android.widget.FrameLayout
 import com.facebook.react.bridge.LifecycleEventListener
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.uimanager.UIManagerModule
+import com.facebook.react.uimanager.events.RCTEventEmitter
 import com.igalata.bubblepicker.adapter.BubblePickerAdapter
 import com.igalata.bubblepicker.model.BubbleGradient
 import com.igalata.bubblepicker.model.PickerItem
@@ -80,7 +81,7 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
 
   override fun onBubbleDeselected(item: PickerItem) {
     val node = findNode(item) ?: return
-    val event = BubbleDeselectNodeEvent(bubblePicker.id)
+    val event = BubbleDeselectNodeEvent(id)
     event.node = node
 
     val reactContext = context as ReactContext
@@ -89,7 +90,7 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
 
   override fun onBubbleSelected(item: PickerItem) {
     val node = findNode(item) ?: return
-    val event = BubbleSelectNodeEvent(bubblePicker.id)
+    val event = BubbleSelectNodeEvent(id)
     event.node = node
 
     val reactContext = context as ReactContext
@@ -98,7 +99,7 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
 
   override fun onBubbleRemoved(item: PickerItem) {
     val node = findNode(item) ?: return
-    val event = BubbleRemoveNodeEvent(bubblePicker.id)
+    val event = BubbleRemoveNodeEvent(id)
     event.item = node
 
     val reactContext = context as ReactContext

@@ -55,10 +55,7 @@ export default function App() {
         <View style={styles.header}>
           <Text style={styles.title}>Discover New Cities</Text>
           <Text style={styles.message}>
-            {Platform.select({
-              ios: "Tap on the places you love, hold on the places you don't.",
-              android: 'Tap on the places you love.',
-            })}
+            Tap on the places you love, hold on the places you don't.
           </Text>
           {selectedCites.length > 0 ? (
             <Text style={styles.selectedCity}>

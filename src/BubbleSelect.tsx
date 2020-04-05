@@ -28,7 +28,7 @@ const BubbleSelect = ({
   onSelect,
   onDeselect,
   style,
-  allowsMultipleSelection,
+  allowsMultipleSelection = true,
   children,
   bubbleSize,
   onRemove,
@@ -68,6 +68,7 @@ const BubbleSelect = ({
     android: {
       onSelectNode: handleSelect,
       onDeselectNode: handleDeselect,
+      onRemoveNode: onRemove,
       bubbleSize,
       backgroundColor,
       maxSelectedItems,
