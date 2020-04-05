@@ -1,5 +1,6 @@
 package com.reactnativebubbleselect
 
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
@@ -44,5 +45,10 @@ class BubbleSelectNodeViewManager: SimpleViewManager<BubbleSelectNodeView>() {
   @ReactProp(name = "color")
   fun setColor(view: BubbleSelectNodeView, color: String?) {
     view.color = color
+  }
+
+  @ReactProp(name = "gradient")
+  fun setGradient(view: BubbleSelectNodeView, gradient: ReadableMap?) {
+    view.gradient = gradient
   }
 }

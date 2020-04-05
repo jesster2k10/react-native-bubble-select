@@ -35,9 +35,11 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
           if (node.fontFamily !== null) {
             typeface = Typeface.create(node.fontFamily, node.fontStyle)
           }
-          val density = context.resources.displayMetrics.density
           textColor = Color.parseColor(node.fontColor)
-          if (node.color !== null) {
+
+          if (node.gradient !== null) {
+            gradient = node.getGradient();
+          } else if (node.color !== null) {
             gradient = BubbleGradient(
               Color.parseColor(node.color),
               Color.parseColor(node.color),
@@ -92,6 +94,7 @@ class BubbleSelectView(context: ReactContext): FrameLayout(context), LifecycleEv
     println(node.id)
     val event = BubbleSelectNodeEvent(bubblePicker.id)
     event.node = node
+    println(event.eventName)
 
     val reactContext = context as ReactContext
     reactContext.getNativeModule(UIManagerModule::class.java).eventDispatcher.dispatchEvent(event)

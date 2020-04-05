@@ -1,5 +1,7 @@
 package com.reactnativebubbleselect
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.View
 import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.ThemedReactContext
@@ -31,9 +33,14 @@ class BubbleSelectViewManager: ViewGroupManager<BubbleSelectView>() {
     view.bubblePicker.bubbleSize = size
   }
 
+  @ReactProp(name = "backgroundColor")
+  fun setBackgroundColor(view: BubbleSelectView, color: String?) {
+    if (color == null) return
+    view.background = ColorDrawable(Color.parseColor(color))
+  }
+
   override fun addView(parent: BubbleSelectView?, child: View?, index: Int) {
     if (child is BubbleSelectNodeView && parent !== null) {
-      print("Add node")
       parent.addNode(child)
     }
   }

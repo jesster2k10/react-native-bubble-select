@@ -67,6 +67,7 @@ const BubbleSelect = ({
       onSelectNode: handleSelect,
       onDeselectNode: handleDeselect,
       bubbleSize,
+      backgroundColor,
     },
     default: {},
   });
