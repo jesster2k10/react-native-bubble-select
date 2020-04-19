@@ -32,4 +32,9 @@ RCT_EXPORT_VIEW_PROPERTY(selectedColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(selectedFontColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(autoSize, BOOL)
 
++ (BOOL)requiresMainQueueSetup
+{
+  return NO;
+}
+
 @end
