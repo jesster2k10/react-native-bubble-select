@@ -174,26 +174,27 @@ const App = () => {
 
 ### iOS Only Props
 
-| property          | type    | required | description                                                                                                                                    | default      |
-| ----------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| id                | string  | TRUE     | A custom identifier used for identifying the node                                                                                              | -            |
-| text              | string  | TRUE     | The text of the bubble. **Note: on android the text must be unique**                                                                           | -            |
-| color             | string  | FALSE    | The background color of the bubble                                                                                                             | black        |
-| radius            | number  | FALSE    | The radius of the bubble. This value is ignored if autoSize is enabled                                                                         | 30           |
-| marginScale       | number  | FALSE    | The margin scale applied to the physics body of the bubble. **recommend that you do not change this value unless you know what you are doing** | 1.01         |
-| fontName          | string  | FALSE    | The name of the custom font applied to the bubble                                                                                              | Avenir-Black |
-| fontSize          | number  | FALSE    | The size of the custom font applied to the bubble                                                                                              | 13           |
-| fontColor         | string  | FALSE    | The color of the bubble text                                                                                                                   | white        |
-| lineHeight        | number  | FALSE    | The line height of the bubble. This value is ignored if autoSize is enabled                                                                    | 1.5          |
-| borderColor       | string  | FALSE    | The border color of the buble                                                                                                                  | -            |
-| borderWidth       | number  | FALSE    | The border width of the bubble                                                                                                                 | -            |
-| padding           | number  | FALSE    | Extra padding applied to the bubble contents, if autoSize is enabled                                                                           | 20           |
-| selectedScale     | number  | FALSE    | The scale of the selected bubble                                                                                                               | 1.33         |
-| deselectedScale   | number  | FALSE    | The scale of the deselected bubble                                                                                                             | 1            |
-| animationDuration | number  | FALSE    | The duration of the scale animation                                                                                                            | 0.2          |
-| selectedColor     | string  | FALSE    | The background color of the selected bubble                                                                                                    | -            |
-| selectedFontColor | string  | FALSE    | The color of the selected bubble text                                                                                                          | -            |
-| autoSize          | boolean | FALSE    | Whether or not the bubble should resize to fit its content                                                                                     | TRUE         |
+| property          | type     | required | description                                                                                                                                    | default      |
+| ----------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| id                | string   | TRUE     | A custom identifier used for identifying the node                                                                                              | -            |
+| text              | string   | TRUE     | The text of the bubble. **Note: on android the text must be unique**                                                                           | -            |
+| color             | string   | FALSE    | The background color of the bubble                                                                                                             | black        |
+| radius            | number   | FALSE    | The radius of the bubble. This value is ignored if autoSize is enabled                                                                         | 30           |
+| marginScale       | number   | FALSE    | The margin scale applied to the physics body of the bubble. **recommend that you do not change this value unless you know what you are doing** | 1.01         |
+| fontName          | string   | FALSE    | The name of the custom font applied to the bubble                                                                                              | Avenir-Black |
+| fontSize          | number   | FALSE    | The size of the custom font applied to the bubble                                                                                              | 13           |
+| fontColor         | string   | FALSE    | The color of the bubble text                                                                                                                   | white        |
+| lineHeight        | number   | FALSE    | The line height of the bubble. This value is ignored if autoSize is enabled                                                                    | 1.5          |
+| borderColor       | string   | FALSE    | The border color of the buble                                                                                                                  | -            |
+| borderWidth       | number   | FALSE    | The border width of the bubble                                                                                                                 | -            |
+| padding           | number   | FALSE    | Extra padding applied to the bubble contents, if autoSize is enabled                                                                           | 20           |
+| selectedScale     | number   | FALSE    | The scale of the selected bubble                                                                                                               | 1.33         |
+| deselectedScale   | number   | FALSE    | The scale of the deselected bubble                                                                                                             | 1            |
+| animationDuration | number   | FALSE    | The duration of the scale animation                                                                                                            | 0.2          |
+| selectedColor     | string   | FALSE    | The background color of the selected bubble                                                                                                    | -            |
+| selectedFontColor | string   | FALSE    | The color of the selected bubble text                                                                                                          | -            |
+| autoSize          | boolean  | FALSE    | Whether or not the bubble should resize to fit its content                                                                                     | TRUE         |
+| initialSelection  | string[] | FALSE    | An id array of the initially selected nodes                                                                                                    | -            |
 
 ### Android Only Props
 

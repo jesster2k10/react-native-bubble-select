@@ -42,19 +42,26 @@ import SpriteKit
     open var longPressDuration: TimeInterval = 0.35
     
     open var isDragging: Bool = false
-    
+  
+    /**
+   Returns the magnetic nodes
+   */
+    open var nodes: [Node] {
+        return children.compactMap { $0 as? Node }
+    }
+  
     /**
      The selected children.
      */
     open var selectedChildren: [Node] {
-        return children.compactMap { $0 as? Node }.filter { $0.isSelected }
+        return nodes.filter { $0.isSelected }
     }
     
     /**
      The removed children.
      */
     open var removedChildren: [Node] {
-        return children.compactMap { $0 as? Node }.filter { $0.isRemoved }
+        return nodes.filter { $0.isRemoved }
     }
     
     /**

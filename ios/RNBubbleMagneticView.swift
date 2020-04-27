@@ -37,6 +37,14 @@ class RNBubbleMagneticView: UIView {
     }
   }
   
+  var initialSelection: [String] = [] {
+    didSet {
+      magnetic.nodes.filter {
+        self.initialSelection.contains($0.id)
+      }.forEach { $0.isSelected = true }
+    }
+  }
+  
   var onSelect: RCTDirectEventBlock?
   var onDeselect: RCTDirectEventBlock?
   var onRemove: RCTDirectEventBlock?
@@ -109,6 +117,10 @@ extension RNBubbleMagneticView {
   
   @objc func setMagneticBackgroundColor(_ magneticBackgroundColor: UIColor?) {
     self.magneticBackgroundColor = magneticBackgroundColor ?? .white
+  }
+  
+  @objc func setInitialSelection(_ initialSelection: [String]) {
+    self.initialSelection = initialSelection ?? []
   }
 }
 

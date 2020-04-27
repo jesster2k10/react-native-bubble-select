@@ -18,5 +18,6 @@ RCT_EXPORT_VIEW_PROPERTY(allowsMultipleSelection, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(longPressDuration, CGFloat)
 RCT_EXPORT_VIEW_PROPERTY(removeNodeOnLongPress, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(magneticBackgroundColor, UIColor)
+RCT_EXPORT_VIEW_PROPERTY(initialSelection, NSArray*)
 
 @end

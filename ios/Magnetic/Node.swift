@@ -261,7 +261,7 @@ import SpriteKit
             super.removeFromParent()
         }
     }
-    
+  
     /**
      Resizes the node to fit its current content
      */
