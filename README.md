@@ -1,5 +1,7 @@
 # React Native Bubble Select
 
+> This project is mostly `stale` at the moment. I haven't had time to maintain it, so the code is outdated. Feel free to open a pull request though and I will try review it once I get the chance to
+
 An easy-to-use customizable bubble animation picker, similar to the Apple Music genre selection
 
 ![Screenshot](./screenshot.png)
